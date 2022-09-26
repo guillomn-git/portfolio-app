@@ -1,17 +1,25 @@
 import React from "react";
+import { Outlet, Link } from "react-router-dom";
 import './NavBar.css';
 import logo from "./logo.svg";
 
-function NavBar(){
+function NavBar() {
     return(
     <div className='navbar'>
-
       <ul>
 
-        <li><a style={{fontSize: 28}} href="http://localhost:3000/home">Portfolio App</a></li><img src={logo} alt="logo" style={{ height: 65, width: 65, marginTop: 0, marginLeft: -15}}></img>
-        <li style={{float: "right", marginTop: 8, marginRight: 32}}><a className="active" href="http://localhost:3000/portfolio">launch app</a></li>
+        <li style={{fontSize: 28}}>
+          <Link to="/">Portfolio App</Link>
+        </li>
+        <img src={logo} alt="logo" style={{ height: 65, width: 65, marginTop: 0, marginLeft: -15}}></img>
+        
+        <li className="active" style={{float: "right", marginTop: 8, marginRight: 32}}>
+            <Link to="portfolio">launch app</Link>
+        </li>
 
       </ul>
+
+      <Outlet />
     </div>
     ); 
 }

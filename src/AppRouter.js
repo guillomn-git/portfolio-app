@@ -1,36 +1,36 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import HomePage from './Views/Home/HomePage';
 import PortfolioPage from './Views/Portfolio/PortfolioPage';
 import LoginPage from './Views/Login/LoginPage';
+import NavBar from './Components/Layout/NavBar';
 
 function AppRouter() {
     return(
 
         <BrowserRouter>
-
             <Routes>
+                <Route path="/" element={<NavBar/>}>
 
-                <Route
-                    path="*"
-                    element={<Navigate to="/home" replace />}
-                />
+                    <Route index element={
+                        <HomePage />
+                    }/>
+
+                    <Route path="portfolio" element={
+                        <PortfolioPage/>
+                    }/>
                 
-                <Route path="/home" element={
-                    <HomePage />
-                }/>
-               
-                <Route path="/portfolio" element={
-                    <PortfolioPage/>
-                }/>
-            
-                <Route path="/login" element={
-                    <LoginPage/>
-                }/>
-            
+                    <Route path="login" element={
+                        <LoginPage/>
+                    }/>
+                    
+                    <Route
+                        path="*"
+                        element={<HomePage/>}
+                    />
+                </Route>
             </Routes>
-        
         </BrowserRouter>
     );
 }
